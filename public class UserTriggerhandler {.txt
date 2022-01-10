@@ -1,6 +1,7 @@
 public class UserTriggerhandler {
     
     @future
+    // Assigning permisssion set to the Profile: Custom Marketing Profile
     public static void assignpersettouser(Set<Id> userids)
     {
         Permissionset perset = [SELECT Id, Name FROM Permissionset WHERE Name = 'Marketing_User_Permisssions' LIMIT 1];
