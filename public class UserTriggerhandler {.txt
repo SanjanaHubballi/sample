@@ -1,0 +1,21 @@
+public class UserTriggerhandler {
+    
+    @future
+    public static void assignpersettouser(Set<Id> userids)
+    {
+        Permissionset perset = [SELECT Id, Name FROM Permissionset WHERE Name = 'Marketing_User_Permisssions' LIMIT 1];
+        List<PermissionSetAssignment> newPermissions = new List<PermissionSetAssignment>();
+        for (Id userId : userids)
+        {
+            PermissionSetAssignment oPermissionSetAssignment = new PermissionSetAssignment();
+            oPermissionSetAssignment.PermissionSetId = perset.Id;
+            oPermissionSetAssignment.AssigneeId = userId;
+            newPermissions.add(oPermissionSetAssignment);
+        }
+        if(newPermissions != null)
+        {
+            insert newPermissions;
+        }
+    }
+
+}
